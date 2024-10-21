@@ -9,9 +9,9 @@ const PORT = process.env.PORT || 3000;
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://forksy.netlify.app', // Your frontend deployment URL
+  origin: 'https://forksy.netlify.app', // Your frontend deployment
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Include this if you are using cookies
+  credentials: true, 
 };
 
 // Apply CORS middleware
