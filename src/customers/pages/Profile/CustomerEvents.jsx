@@ -11,7 +11,7 @@ const CustomerEvents = () => {
 
   useEffect(()=>{
     dispatch(getAllEvents({jwt}))
-  },[auth.jwt])
+  },[auth.jwt, dispatch, jwt])
   return (
     <div className="mt-5 px-5 flex flex-wrap gap-5">
     {restaurant.events.map((item)=> <div>
