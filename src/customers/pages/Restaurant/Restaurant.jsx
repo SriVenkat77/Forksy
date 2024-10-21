@@ -83,10 +83,7 @@ const Restaurant = () => {
   return (
     <><div className="px-5 lg:px-20 ">
       <section>
-        <h3 className="text-gray-500 py-2 mt-10">
-          Home/{restaurant.restaurant?.address.country}/
-          {restaurant.restaurant?.name}/{restaurant.restaurant?._id}/Order Online
-        </h3>
+       
         <div>
          
           <Grid container spacing={2}>
