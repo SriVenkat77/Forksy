@@ -10,7 +10,7 @@ const Orders = () => {
 
   useEffect(()=>{
     dispatch(getUsersOrders(jwt))
-  },[auth.jwt])
+  },[auth.jwt, dispatch, jwt])
   return (
     <div className='flex items-center flex-col'>
       <h1 className='text-xl text-center py-7 font-semibold'>My Payments</h1>
