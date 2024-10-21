@@ -1,17 +1,17 @@
 import React from "react";
 import "./Navbar.css";
 import PersonIcon from "@mui/icons-material/Person";
+import HelpIcon from "@mui/icons-material/Support"; 
 import {
   Avatar,
   Badge,
-  
   IconButton,
   Menu,
   MenuItem,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
-import {  useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Auth from "../../pages/Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../State/Authentication/Action";
@@ -19,7 +19,6 @@ import { pink } from "@mui/material/colors";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  
   const { auth, cart } = useSelector((store) => store);
   const dispatch = useDispatch();
 
@@ -36,9 +35,9 @@ const Navbar = () => {
     navigate("/cart");
   };
 
-  const navigateToProfile = (e) => {
+  const navigateToProfile = () => {
     auth.user?.role === "ROLE_ADMIN" 
-    || auth.user?.role === "ROLE_RESTAURANT_OWNER"
+      || auth.user?.role === "ROLE_RESTAURANT_OWNER"
       ? navigate("/admin/restaurant")
       : navigate("/my-profile");
   };
@@ -46,11 +45,14 @@ const Navbar = () => {
   const handleCloseAuthModel = () => {
     navigate("/");
   };
+
   const navigateToHome = () => {
     navigate("/");
   };
 
-  
+  const navigateToSupport = () => {
+    navigate("/support"); 
+  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -58,28 +60,36 @@ const Navbar = () => {
   };
 
   return (
-    <div className="px-5 z-50 py-[.8rem] bg-[#2E8B57]  lg:px-20 flex justify-between">
+    <div className="px-5 z-50 py-[.8rem] bg-[#2E8B57] lg:px-20 flex justify-between">
       <div className="flex items-center space-x-4">
         <div
           onClick={navigateToHome}
           className="lg:mr-10 cursor-pointer flex items-center space-x-4"
         >
-           <img
-    src="https://w7.pngwing.com/pngs/664/210/png-transparent-uber-eats-muncheez-delivery-online-food-ordering-food-delivery-food-logo-uber-eats-thumbnail.png" // Replace with the image URL or path
-    alt="Logo"
-    className="w-10 h-10" // Adjust size as needed
-  />
+          <img
+            src="https://w7.pngwing.com/pngs/664/210/png-transparent-uber-eats-muncheez-delivery-online-food-ordering-food-delivery-food-logo-uber-eats-thumbnail.png" // Replace with the image URL or path
+            alt="Logo"
+            className="w-10 h-10" // Adjust size as needed
+          />
           <li className="logo font-semibold text-black-300 text-2xl">
             Forksy
           </li>
         </div>
-       
       </div>
       <div className="flex items-center space-x-2 lg:space-x-10">
-        <div className=""> 
+        <div>
           <IconButton onClick={() => navigate("/search")}>
             <SearchIcon sx={{ fontSize: "2rem" }} /><span style={{ fontSize: "1rem" }}>Search</span>
           </IconButton>
+          <IconButton onClick={navigateToSupport}>
+          <HelpIcon sx={{ fontSize: "2rem" }} /> <span style={{ fontSize: "1rem" }}>Help</span>
+        </IconButton>
+        
+        <IconButton onClick={navigateToCart}>
+          <Badge color="black" badgeContent={cart.cartItems.length}>
+            <ShoppingCartIcon className="text-4xl" sx={{ fontSize: "2rem" }} /> <span style={{ fontSize: "1rem" }}>Cart</span>
+          </Badge>
+        </IconButton>
         </div>
         <div className="flex items-center space-x-2">
           {auth.user?.fullName ? (
@@ -93,11 +103,11 @@ const Navbar = () => {
                   ? handleOpenMenu
                   : navigateToProfile
               }
-              className=" font-semibold cursor-pointer"
+              className="font-semibold cursor-pointer"
             >
-              <Avatar sx={{ bgcolor: "white",color:pink.A400}} >
+              <Avatar sx={{ bgcolor: "white", color: pink.A400 }} >
                 {auth.user.fullName[0].toUpperCase()}
-              </Avatar> <span style={{ fontSize: "1rem" }}>Profile</span>
+              </Avatar> 
             </span>
           ) : (
             <IconButton onClick={() => navigate("/account/login")}>
@@ -125,12 +135,8 @@ const Navbar = () => {
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </div>
-
-        <IconButton onClick={navigateToCart}>
-          <Badge color="black" badgeContent={cart.cartItems.length}>
-            <ShoppingCartIcon className="text-4xl" sx={{ fontSize: "2rem" }} /> <span style={{ fontSize: "1rem" }}>Cart</span>
-          </Badge>
-        </IconButton>
+        
+       
       </div>
 
       <Auth handleClose={handleCloseAuthModel} />
