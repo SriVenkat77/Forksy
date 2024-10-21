@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 // CORS configuration
 const corsOptions = {
-  origin: 'http://localhost:3000', // Your frontend deployment URL
+  origin: 'https://forksy.netlify.app', // Your frontend deployment URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Include this if you are using cookies
 };
