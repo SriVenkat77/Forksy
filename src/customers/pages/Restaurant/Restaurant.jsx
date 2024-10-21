@@ -119,10 +119,7 @@ const Restaurant = () => {
           </h1>
           <p className="text-gray-500 mt-1">{restaurant.restaurant?.description}</p>
           <div className="space-y-3 mt-3">
-              <p className="text-gray-500 flex items-center gap-3">
-            <LocationOnIcon/> <span>{restaurant.restaurant?.address.streetAddress}
-              </span> 
-          </p>
+              
           <p className="flex items-center gap-3 text-gray-500">
            <TodayIcon/> <span className=" text-orange-300"> {restaurant.restaurant?.openingHours} (Today)</span>  
           </p>
