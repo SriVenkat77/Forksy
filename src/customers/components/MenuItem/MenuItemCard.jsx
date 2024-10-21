@@ -97,6 +97,19 @@ const MenuItemCard = ({ item }) => {
                             handleCheckboxChange(ingredient.name)
                           }
                           disabled={!ingredient.inStoke}
+                           sx={{
+    
+    "& .MuiSvgIcon-root": {
+      border: "2px solid green", 
+    },
+   
+    "&.Mui-checked": {
+      color: "red", 
+    },
+    "&.Mui-checked .MuiSvgIcon-root": {
+      border: "2px solid red", 
+    },
+  }}
                         />
                       }
                       label={ingredient.name}
