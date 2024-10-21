@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = "https://capstone-1i9k.onrender.com";
+export const API_URL = "https://capstone-1-y8m9.onrender.com";
 
 
 export const api = axios.create({
