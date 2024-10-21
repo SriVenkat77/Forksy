@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Auth from "../../pages/Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../State/Authentication/Action";
