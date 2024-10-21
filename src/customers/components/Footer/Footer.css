@@ -1,0 +1,15 @@
+/* Footer.css */
+.footer {
+    background-color: #2E8B57; 
+    color: white; 
+  }
+  
+  .footer a {
+    color: rgb(81, 23, 139); 
+    margin: 0 5px; 
+  }
+  
+  .footer a:hover {
+    text-decoration: underline; 
+  }
+  
