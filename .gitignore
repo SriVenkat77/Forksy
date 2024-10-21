@@ -1,0 +1,13 @@
+node_modules/
+
+
+.env
+
+#for jwt
+SECERET_KEY="snxbeuzbjerrayeabbtgakenbbhggyuutwerlmjsospexndbusnakdo"
+
+
+
+# for sending email
+EMAIL=venkatasmi143@gmail.com
+PASS=pcehahrsdgkpkrrb
