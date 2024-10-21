@@ -1,9 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import CustomerRoutes from "./CustomerRoutes";
-
-import { useSelector } from "react-redux";
-
 import AdminRouters from "./AdminRouters";
 
 const Routers = () => {
