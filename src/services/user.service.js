@@ -145,7 +145,7 @@ module.exports = {
         from: EMAIL,
         to: user.email,
         subject: "Password Reset",
-        text: `Click the following link to reset your password: http://localhost:3000/account/reset-password?token=${resetToken}`,
+        text: `Click the following link to reset your password: https://forksy.netlify.app/account/reset-password?token=${resetToken}`,
       });
     } catch (error) {
       throw new Error(`Error sending password reset email: ${error.message}`);
