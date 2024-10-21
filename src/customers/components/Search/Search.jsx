@@ -6,7 +6,6 @@ import SearchDishCard from "./SearchDishCard";
 import { useDispatch, useSelector } from "react-redux";
 import { searchMenuItem } from "../../../State/Customers/Menu/menu.action";
 
-const dish = [1, 1, 1, 1];
 const Search = () => {
   const dispatch = useDispatch();
   const { menu,auth } = useSelector((store) => store);
