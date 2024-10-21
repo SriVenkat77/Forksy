@@ -18,15 +18,6 @@ import { getMenuItemsByRestaurantId } from "../../../State/Customers/Menu/menu.a
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TodayIcon from '@mui/icons-material/Today';
 
-const categories = [
-  "Thali",
-  "Starters",
-  "Indian Main Course",
-  "Rice and Biryani",
-  "Breads",
-  "Accompaniments",
-  "Dessert",
-];
 
 const foodTypes = [
   {label:"All",value:"all"},
@@ -66,7 +57,7 @@ const Restaurant = () => {
       })
     );
     dispatch(getRestaurantsCategory({restaurantId:id,jwt}))
-  }, [id,foodType,foodCategory]);
+  }, [id,foodType,foodCategory, dispatch, jwt]);
 
   console.log("-----",{
     jwt: localStorage.getItem("jwt"),
