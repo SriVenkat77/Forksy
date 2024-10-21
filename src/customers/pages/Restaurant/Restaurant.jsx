@@ -15,7 +15,6 @@ import MenuItemCard from "../../components/MenuItem/MenuItemCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getRestaurantById, getRestaurantsCategory } from "../../../State/Customers/Restaurant/restaurant.action";
 import { getMenuItemsByRestaurantId } from "../../../State/Customers/Menu/menu.action";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TodayIcon from '@mui/icons-material/Today';
 
 
