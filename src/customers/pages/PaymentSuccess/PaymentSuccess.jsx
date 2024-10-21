@@ -13,7 +13,7 @@ const PaymentSuccess = () => {
 
   useEffect(() => {
     dispatch(clearCartAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="min-h-screen  px-5 ">
