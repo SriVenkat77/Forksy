@@ -6,7 +6,16 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors())
+
+// CORS configuration
+const corsOptions = {
+  origin: 'https://forksy.netlify.app', // Your frontend deployment URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Include this if you are using cookies
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
 
 // Middleware
 app.use(bodyParser.json());
