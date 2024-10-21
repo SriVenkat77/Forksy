@@ -2,43 +2,43 @@ import { createTheme } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
-    mode: "dark", // This sets the theme to dark mode
+    mode: "dark", 
     primary: {
-      main: "#FF5722", // Bright orange for primary color
-      contrastText: "#ffffff", // White for text on primary background
+      main: "#FF5722", 
+      contrastText: "#ffffff", 
     },
     secondary: {
-      main: "#2196F3", // Bright blue for secondary color
-      contrastText: "#ffffff", // White for text on secondary background
+      main: "#2196F3", 
+      contrastText: "#ffffff", 
     },
     black: {
-      main: "#000000", // Dark gray for black
+      main: "#000000", 
     },
     background: {
-      main: "#50C878", // Green background
-      default: "#50C878", // Set default background
-      paper: "#2E8B57", // Darker gray for card backgrounds
+      main: "#50C878", 
+      default: "#50C878", 
+      paper: "#2E8B57", 
     },
     text: {
-      primary: "#000000", // White for primary text
-      secondary: "#ffffff", // Light gray for secondary text
+      primary: "#000000", 
+      secondary: "#ffffff", 
     },
     common: {
-      black: "#000000", // Black color
-      orange: "#FF9800", // Bright orange for accent
-      blue: "#2196F3", // Bright blue for accent
+      black: "#000000", 
+      orange: "#FF9800", 
+      blue: "#2196F3",
     },
     error: {
-      main: "#f44336", // Red for error messages
+      main: "#f44336", 
     },
     success: {
-      main: "#4caf50", // Green for success messages
+      main: "#4caf50", 
     },
     warning: {
-      main: "#ff9800", // Orange for warnings
+      main: "#ff9800", 
     },
     info: {
-      main: "#2196f3", // Blue for informational messages
+      main: "#2196f3", 
     },
   },
 });
