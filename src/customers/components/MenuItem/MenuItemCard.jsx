@@ -34,17 +34,23 @@ const MenuItemCard = ({ item }) => {
   };
   
   const handleAddItemToCart = (e) => {
-    
-    const data = {
-      token: localStorage.getItem("jwt"),
-      cartItem: {
-        menuItemId: item._id,
-        quantity: 1,
-        ingredients:selectedIngredients
-      },
-    };
-    dispatch(addItemToCart(data));
+  e.preventDefault(); 
+
+  const data = {
+    token: localStorage.getItem("jwt"),
+    cartItem: {
+      menuItemId: item._id,
+      quantity: 1,
+      ingredients: selectedIngredients,
+    },
   };
+
+  dispatch(addItemToCart(data)).then(() => {
+  
+    window.location.reload();
+  });
+};
+
   
 
   return (
