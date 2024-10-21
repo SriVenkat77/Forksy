@@ -46,7 +46,7 @@ module.exports = {
         notes: {
           description: "Pizza Burger",
         },
-        callback_url: `http://localhost:3000/payment/success/${order._id}`,
+        callback_url: `https://forksy.netlify.app/payment/success/${order._id}`,
         callback_method: "get",
       };
 
