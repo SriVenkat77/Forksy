@@ -56,4 +56,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Acknowledgments
 	• Razorpay for payment integration.
 	• TailwindCSS for styling.
-MongoDB, Express, React, and Node.js for the foundational technologies.![image](https://github.com/user-attachments/assets/12728d1e-a5b2-4c0d-b25e-5654a3fed38f)
+MongoDB, Express, React, and Node.js for the foundational technologies.
