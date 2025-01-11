@@ -16,7 +16,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import EventIcon from "@mui/icons-material/Event";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LogoutIcon from "@mui/icons-material/Logout";
+
 
 import Orders from "../Orders/Orders";
 import UsersAddresses from "../UsersAdresses/UsersAddresses";
