@@ -6,8 +6,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import InfoIcon from "@mui/icons-material/Info";
 import { useMediaQuery } from "@mui/material";
-
-
+import MenuIcon from '@mui/icons-material/Menu'; // Import MenuIcon for hamburger
 
 const menu = [
   { title: "FAQs", icon: <HelpOutlineIcon />, section: "faqs" },
@@ -15,21 +14,47 @@ const menu = [
   { title: "Contact Information", icon: <PhoneIcon />, section: "contactInfo" },
   { title: "Customer Care", icon: <EmailIcon />, section: "customerCare" },
 ];
+
 const Support = () => {
   const [activeSection, setActiveSection] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false); // State to toggle menu
   const isSmallScreen = useMediaQuery("(max-width:1080px)");
-  
+
   const handleNavigate = (item) => {
     if (item.section) {
       setActiveSection(item.section);
-    } 
+      if (isSmallScreen) {
+        setMenuOpen(false); // Close the menu on item click for small screens
+      }
+    }
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(prevState => !prevState); // Toggle menu visibility
   };
 
   return (
     <div className={`lg:flex ${isSmallScreen ? 'flex-col' : 'flex-row'} h-[100vh]`}>
-   
-      <div className={`w-[70vw] lg:w-[20vw] h-[100vh] flex flex-col justify-center bg-[#2E8B57] ${isSmallScreen ? 'w-full' : 'w-[20vw]'}`}>
-        <div className="w-full h-full flex flex-col justify-start space-y-2 p-5">
+      {/* Hamburger Button for Small Screens */}
+      {isSmallScreen && (
+        <div className="absolute top-15 left-5 z-50">
+          <MenuIcon onClick={toggleMenu} style={{
+        cursor: 'pointer',
+        color: '#fff', // Icon color
+        position: "fixed",
+        top: 70,
+        
+        fontSize: '40px', // Increase the size of the icon
+      }} />
+        </div>
+      )}
+
+      {/* Sidebar */}
+      <div 
+        className={`w-[70vw] lg:w-[20vw] h-full flex flex-col justify-start bg-[#2E8B57] ${isSmallScreen ? (menuOpen ? 'block' : 'hidden') : 'block'}`}
+        style={isSmallScreen ? { flexShrink: 0 } : {}}
+      >
+        <div className="w-full flex flex-col justify-start space-y-2 p-5">
           {menu.map((item, i) => (
             <React.Fragment key={i}>
               <div
@@ -68,11 +93,12 @@ const MainContent = ({ activeSection }) => {
   );
 };
 
+// FAQ Section
 const FAQs = () => {
   const faqData = [
     {
       question: 'What is the return policy?',
-      answer: 'You can return any item within 30 days of purchase, provided that the item is unused, undamaged, and in its original packaging. Please contact our customer support team to initiate a return, and they will guide you through the process.',
+      answer: 'You can return any item within 30 minutes of purchase, provided that the item is unused, undamaged, and in its original packaging. Please contact our customer support team to initiate a return, and they will guide you through the process.',
     },
     {
       question: 'How can I track my order?',
@@ -80,22 +106,21 @@ const FAQs = () => {
     },
     {
       question: 'What payment methods are accepted?',
-      answer: 'We accept various payment methods including credit/debit cards, PayPal, and bank transfers. Additionally, some of our partners offer installment options through third-party financial services.',
+      answer: 'We accept various payment methods including credit/debit cards, PayPal, and bank transfers.',
     },
     {
       question: 'Can I change my shipping address after placing an order?',
-      answer: 'Yes, you can change your shipping address within 24 hours of placing your order. After that, changes may not be possible as your order may already be in the process of dispatch. Please contact our customer support team for assistance.',
+      answer: 'Yes, you can change your shipping address within 15 minutes of placing your order. After that, changes may not be possible as your order may already be in the process of dispatch. Please contact our customer support team for assistance.',
     },
     {
       question: 'Do you offer international shipping?',
-      answer: 'Yes, we offer international shipping to most countries. Shipping fees and delivery times vary depending on the destination. Please refer to our shipping policy for more details.',
+      answer: 'No, we did not offer international shipping to most countries. Shipping fees and delivery times vary depending on the destination. Please refer to our shipping policy for more details.',
     },
     {
       question: 'How do I reset my account password?',
       answer: 'To reset your password, go to the login page and click "Forgot Password." Follow the instructions sent to your registered email to reset your password. If you encounter any issues, feel free to reach out to our customer care team for assistance.',
     },
   ];
-  
 
   return (
     <Box mb={4}>
@@ -114,6 +139,7 @@ const FAQs = () => {
   );
 };
 
+// General Issues Section
 const GeneralIssues = () => {
   const issuesData = [
     {
@@ -141,7 +167,6 @@ const GeneralIssues = () => {
       description: 'If your promo code is not working, please double-check its expiration date and terms of use. Some codes may be applicable only to specific products or categories. Contact our support team if you believe the code should work but isn’t being accepted.',
     },
   ];
-  
 
   return (
     <Box mb={4}>
@@ -160,24 +185,26 @@ const GeneralIssues = () => {
   );
 };
 
+// Contact Information Section
 const ContactInfo = () => {
   return (
     <Box mb={4}>
       <Typography variant="h6" className="font-bold mb-3">Contact Information</Typography><br />
-      <Typography>Email: support@forksy.com</Typography> 
+      <Typography>Email: support@forksy.com</Typography>
       <Typography>Phone: 123-456-7890</Typography>
       <Typography>Office Hours: Monday - Friday, 9 AM - 5 PM </Typography>
       <Typography>Address: 123 Gandhipuram, Coimbatore, Tamilnadu, India - 640106</Typography>
       <Typography>For urgent matters, please call our 24/7 support hotline at 987-654-3210.</Typography>
       <Typography>Social Media: Follow us on Twitter, Facebook, and Instagram for the latest updates and support.</Typography>
-    </Box>
+       </Box>
   );
 };
 
+// Customer Care Section
 const CustomerCare = () => {
   return (
     <Box mb={4}>
-      <Typography variant="h6" className="font-bold mb-3">Customer Care</Typography><br />
+     <Typography variant="h6" className="font-bold mb-3">Customer Care</Typography><br />
       <Typography>
         Our customer care team is here to help with any issues you may face. We aim to respond to all inquiries within 24 hours. You can reach us via phone, email, or social media for support.
       </Typography>
@@ -187,7 +214,7 @@ const CustomerCare = () => {
       <Typography>
         We also offer a live chat service on our website during business hours for real-time assistance. For urgent issues, feel free to call our customer care hotline 987-654-3210, available 24/7.
       </Typography>
-    </Box>
+       </Box>
   );
 };
 
