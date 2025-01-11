@@ -4,35 +4,34 @@ import RegistrationForm from "../../components/Register/Register";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginForm from "../../components/Login/Login";
 import ResetPasswordRequest from "./ResetPaswordRequest";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ResetPasswordForm from "./ResetPasswordForm";
-
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: { xs: "90%", sm: 400 }, // Responsive width
   bgcolor: "background.paper",
   boxShadow: 24,
   outline: "none",
-  p: 4,
+  p: { xs: 2, sm: 4 }, // Adjust padding for smaller screens
 };
 
 const Auth = ({ open, handleClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { auth } = useSelector((store) => store);
-  const [openSnackBar,setOpenSnackBar]=useState(false);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
 
-useEffect(()=>{
-if(auth.success || auth.error)setOpenSnackBar(true)
-},[auth.success, auth.error])
+  useEffect(() => {
+    if (auth.success || auth.error) setOpenSnackBar(true);
+  }, [auth.success, auth.error]);
 
-const handleCloseSnackBar=()=>{
-  setOpenSnackBar(false)
-}
+  const handleCloseSnackBar = () => {
+    setOpenSnackBar(false);
+  };
 
   return (
     <>
@@ -50,19 +49,23 @@ const handleCloseSnackBar=()=>{
             <RegistrationForm />
           ) : location.pathname === "/account/login" ? (
             <LoginForm />
-          ) : location.pathname === "/account/reset-password" ? <ResetPasswordForm/>: (
+          ) : location.pathname === "/account/reset-password" ? (
+            <ResetPasswordForm />
+          ) : (
             <ResetPasswordRequest />
           )}
           <div className="flex justify-center mt-5">
-            {location.pathname === "/account/reset-password-request" || location.pathname === "/account/reset-password"  ? (
-              <Button onClick={() => navigate("/account/login")}>
+            {location.pathname === "/account/reset-password-request" ||
+            location.pathname === "/account/reset-password" ? (
+              <Button onClick={() => navigate("/account/login")} sx={{ width: "auto" }}>
                 Go Back To Login
               </Button>
             ) : (
               <Button
                 onClick={() => navigate("/account/reset-password-request")}
+                sx={{ width: "auto" }}
               >
-                Forgot Pasword
+                Forgot Password
               </Button>
             )}
             <Snackbar
@@ -70,10 +73,9 @@ const handleCloseSnackBar=()=>{
               open={openSnackBar}
               autoHideDuration={3000}
               onClose={handleCloseSnackBar}
-              
               anchorOrigin={{ vertical: "top", horizontal: "right" }}
             >
-              <Alert severity={auth.error?"error":"success"} sx={{ width: "100%" }}>
+              <Alert severity={auth.error ? "error" : "success"} sx={{ width: "100%" }}>
                 {auth.success || auth.error}
               </Alert>
             </Snackbar>
