@@ -16,21 +16,18 @@ import {
 } from "@mui/material";
 
 import CreateIngredientCategoryForm from "./CreateIngredientCategory";
-import {  useState } from "react";
+import { useState } from "react";
 import CreateIngredientForm from "./CreateIngredientForm";
 import { useDispatch, useSelector } from "react-redux";
-import {
-
-  updateStockOfIngredient
-} from "../../State/Admin/Ingredients/Action";
-
+import { updateStockOfIngredient } from "../../State/Admin/Ingredients/Action";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: "90%", // Adjust width to 90% for smaller screens
+  maxWidth: "400px", // Ensure max width on larger screens
   bgcolor: "background.paper",
   boxShadow: 24,
   outline: "none",
@@ -39,7 +36,7 @@ const style = {
 
 const Ingredients = () => {
   const dispatch = useDispatch();
-  const {  ingredients } = useSelector((store) => store);
+  const { ingredients } = useSelector((store) => store);
   const jwt = localStorage.getItem("jwt");
 
   const [openIngredientCategory, setOpenIngredientCategory] = useState(false);
@@ -55,12 +52,12 @@ const Ingredients = () => {
   };
 
   return (
-    <div className="px-2">
-      <Grid container spacing={1}>
-        <Grid  item xs={12} lg={8}>
-          <Card className="mt-1">
+    <div className="px-4 md:px-8 py-4">
+      <Grid container spacing={2}>
+        <Grid item xs={12} lg={8}>
+          <Card className="mt-4">
             <CardHeader
-              title={"Ingredients"}
+              title="Ingredients"
               sx={{
                 pt: 2,
                 alignItems: "center",
@@ -68,25 +65,20 @@ const Ingredients = () => {
               }}
               action={
                 <IconButton onClick={handleOpenIngredient}>
-                  {" "}
                   <Create />
                 </IconButton>
               }
             />
-            <TableContainer className="h-[88vh] overflow-y-scroll">
-              <Table sx={{}} aria-label="table in dashboard">
+            <TableContainer className="h-[60vh] md:h-[88vh] overflow-y-auto">
+              <Table aria-label="Ingredients Table">
                 <TableHead>
                   <TableRow>
-                   
-
                     <TableCell>Name</TableCell>
-
                     <TableCell>Category</TableCell>
-
                     <TableCell>Availability</TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody sx={{ backgroundColor: 'white' }}>
+                <TableBody>
                   {ingredients.ingredients.map((item, index) => (
                     <TableRow
                       className="cursor-pointer"
@@ -96,17 +88,14 @@ const Ingredients = () => {
                         "&:last-of-type td, &:last-of-type th": { border: 0 },
                       }}
                     >
-                   
-
-                      <TableCell className="">{item.name}</TableCell>
-                      <TableCell className="">{item.category.name}</TableCell>
-
-                      <TableCell className="">
+                      <TableCell>{item.name}</TableCell>
+                      <TableCell>{item.category.name}</TableCell>
+                      <TableCell>
                         <Button
                           onClick={() => handleUpdateStocke(item._id)}
                           color={item.inStoke ? "success" : "primary"}
                         >
-                          {item.inStoke ? "in stock" : "out of stock"}
+                          {item.inStoke ? "In Stock" : "Out of Stock"}
                         </Button>
                       </TableCell>
                     </TableRow>
@@ -116,10 +105,11 @@ const Ingredients = () => {
             </TableContainer>
           </Card>
         </Grid>
+
         <Grid item xs={12} lg={4}>
-          <Card className="mt-1">
+          <Card className="mt-4">
             <CardHeader
-              title={"Category"}
+              title="Category"
               sx={{
                 pt: 2,
                 alignItems: "center",
@@ -127,21 +117,18 @@ const Ingredients = () => {
               }}
               action={
                 <IconButton onClick={handleOpenIngredientCategory}>
-                  {" "}
                   <Create />
                 </IconButton>
               }
             />
             <TableContainer>
-              <Table sx={{}} aria-label="table in dashboard">
-                <TableHead >
+              <Table aria-label="Categories Table">
+                <TableHead>
                   <TableRow>
-                   
-
                     <TableCell>Name</TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody sx={{ backgroundColor: 'white' }}>
+                <TableBody>
                   {ingredients.category?.map((item, index) => (
                     <TableRow
                       className="cursor-pointer"
@@ -151,9 +138,7 @@ const Ingredients = () => {
                         "&:last-of-type td, &:last-of-type th": { border: 0 },
                       }}
                     >
-                     
-
-                      <TableCell className="">{item.name}</TableCell>
+                      <TableCell>{item.name}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -163,6 +148,7 @@ const Ingredients = () => {
         </Grid>
       </Grid>
 
+      {/* Ingredient Form Modal */}
       <Modal
         open={openIngredient}
         onClose={handleCloseIngredient}
@@ -174,6 +160,7 @@ const Ingredients = () => {
         </Box>
       </Modal>
 
+      {/* Ingredient Category Form Modal */}
       <Modal
         open={openIngredientCategory}
         onClose={handleCloseIngredientCategory}
