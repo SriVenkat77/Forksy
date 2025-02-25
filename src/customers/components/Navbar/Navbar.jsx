@@ -77,9 +77,9 @@ const Navbar = () => {
           className="lg:mr-10 cursor-pointer flex items-center space-x-4"
         >
           <img
-            src="https://w7.pngwing.com/pngs/664/210/png-transparent-uber-eats-muncheez-delivery-online-food-ordering-food-delivery-food-logo-uber-eats-thumbnail.png" // Replace with the image URL or path
+            src="https://i.postimg.cc/wMGVRSJM/logo191.png" 
             alt="Logo"
-            className="w-10 h-10" // Adjust size as needed
+            className="w-10 h-10" 
           />
           <li className="logo font-semibold text-black-300 text-xl  lg:block">
             Forksy
